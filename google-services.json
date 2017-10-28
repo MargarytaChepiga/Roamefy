@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "844616883402",
+    "firebase_url": "https://roamefy-app.firebaseio.com",
+    "project_id": "roamefy-app",
+    "storage_bucket": "roamefy-app.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:844616883402:android:20cc4a81ba87ceba",
+        "android_client_info": {
+          "package_name": "io.ionic.roamefy"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "844616883402-77i6ir42nvn5rlnda9kh3o7i99v8rfg6.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyClqNtFfu0sbKO9XO-Z_WYvY5s9N24Uhr8"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

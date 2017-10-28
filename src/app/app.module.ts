@@ -18,6 +18,9 @@ import { AngularFireModule } from 'angularfire2';
 import { FirebaseProvider } from './../providers/firebase/firebase';
 import { AuthProvider } from '../providers/auth/auth';
 import { AngularFireAuthModule } from 'angularfire2/auth';
+import { FirebaseServiceProvider } from '../providers/firebase-service/firebase-service';
+import { Firebase } from '@ionic-native/firebase';
+import { FCM } from '@ionic-native/fcm';
 
 //Firebase datase configuration data
 //DO NOT CHANGE ANYTHING
@@ -55,7 +58,10 @@ const firebaseConfig = {
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     FirebaseProvider,
-    AuthProvider
+    AuthProvider,
+    FirebaseServiceProvider,
+    Firebase,
+    FCM
   ]
 })
 export class AppModule {}
