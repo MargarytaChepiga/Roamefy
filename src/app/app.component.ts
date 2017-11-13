@@ -12,6 +12,8 @@ import { LoginPage } from '../pages/login/login';
 import { InitialConfigurationPage } from '../pages/initial-configuration/initial-configuration';
 import { InitialConfigurationTwoPage } from '../pages/initial-configuration-two/initial-configuration-two';
 
+import { OneSignal } from '@ionic-native/onesignal';
+
 @Component({
   templateUrl: 'app.html'
 })
@@ -24,21 +26,26 @@ export class MyApp {
   pages: Array<{title: string, component: any}>;
 
   constructor(public platform: Platform, afAuth: AngularFireAuth, public statusBar: StatusBar, public splashScreen: SplashScreen, 
-    public firebaseProvider: FirebaseProvider) {
+    public firebaseProvider: FirebaseProvider, public oneSignal: OneSignal) {
     const authObserver = afAuth.authState.subscribe( user => {
       if (user) {
         this.userID = user.uid;
         this.rootPage = HomePage;
         authObserver.unsubscribe();
+       
       } else {
         this.userID = null;
         this.rootPage = LoginPage;
         authObserver.unsubscribe();
       }
+
+     
+      
     });
 
     this.initializeApp();
 
+    
     this.pages = [
       { title: "Home", component: HomePage },
       { title: "Interests", component: InitialConfigurationPage },
@@ -55,6 +62,25 @@ export class MyApp {
       // Here you can do any higher level native things you might need.
       this.statusBar.styleDefault();
       this.splashScreen.hide();
+      
+      var notificationOpenedCallback = function(jsonData) {
+        alert('notificationOpenedCallback: ' + JSON.stringify(jsonData));
+      };
+
+      this.oneSignal.startInit('e979d775-d7e2-46e7-88c9-864d62ac51b2', '844616883402');
+      this.oneSignal.inFocusDisplaying(this.oneSignal.OSInFocusDisplayOption.InAppAlert);
+      
+      this.oneSignal.handleNotificationReceived().subscribe(() => {
+       // do something when notification is received
+      });
+      
+      this.oneSignal.handleNotificationOpened().subscribe(() => {
+        // do something when a notification is opened
+      });
+      
+      this.oneSignal.endInit();  
+     
+
     });
   }
 

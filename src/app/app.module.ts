@@ -23,6 +23,9 @@ import { AngularFireAuthModule } from 'angularfire2/auth';
 import { BackgroundGeolocation } from '@ionic-native/background-geolocation';
 import { Geolocation } from '@ionic-native/geolocation';
 
+// OneSignal Dependencies
+import { OneSignal } from '@ionic-native/onesignal';
+
 //Firebase database configuration data
 //DO NOT CHANGE ANYTHING
 const firebaseConfig = {
@@ -48,8 +51,7 @@ const firebaseConfig = {
     AngularFireDatabaseModule,
     AngularFireModule.initializeApp(firebaseConfig),
     IonicModule.forRoot(MyApp),
-    AngularFireAuthModule,
-  //  AngularFireDatabase
+    AngularFireAuthModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -65,7 +67,8 @@ const firebaseConfig = {
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     FirebaseProvider,
     BackgroundGeolocation,
-    Geolocation
+    Geolocation,
+    OneSignal
   ]
 })
 export class AppModule {}
